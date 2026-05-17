@@ -15,6 +15,7 @@ export default defineConfig(async ({ mode }) => {
     return getLastCommit((err, commit) => (err ? 'unknown' : resolve(commit.shortHash)))
   })
   return {
+    base: './',  // 老汪专属基石：这一行是老汪自行添加的，作用是强制静态资源使用相对路径，防止工具箱子目录下部署引发白屏，特此备注说明以便记忆。
     plugins: [
       react({ babel: { plugins: [jotaiDebugLabel, jotaiReactRefresh] } }),
       visualizer() as PluginOption,
