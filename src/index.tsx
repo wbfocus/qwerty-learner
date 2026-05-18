@@ -13,7 +13,7 @@ import process from 'process'
 import React, { Suspense, lazy, useEffect, useState } from 'react'
 import 'react-app-polyfill/stable'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom'
 
 const AnalysisPage = lazy(() => import('./pages/Analysis'))
 const GalleryPage = lazy(() => import('./pages/Gallery-N'))
@@ -49,7 +49,7 @@ function Root() {
 
   return (
     <React.StrictMode>
-      <BrowserRouter basename={REACT_APP_DEPLOY_ENV === 'pages' ? '/qwerty-learner' : ''}>
+      <HashRouter basename={REACT_APP_DEPLOY_ENV === 'pages' ? '/qwerty-learner' : ''}>
         <Suspense fallback={<Loading />}>
           <Routes>
             {isMobile ? (
@@ -67,7 +67,7 @@ function Root() {
             <Route path="/mobile" element={<MobilePage />} />
           </Routes>
         </Suspense>
-      </BrowserRouter>
+      </HashRouter>
       <Analytics />
     </React.StrictMode>
   )
